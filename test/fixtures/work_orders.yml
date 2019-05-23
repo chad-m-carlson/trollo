@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: MyString
+  description: MyString
+  tail_number: MyString
+  serial_number: MyString
+  date_opened: MyString
+  date_needed: MyString
+
+two:
+  customer: MyString
+  description: MyString
+  tail_number: MyString
+  serial_number: MyString
+  date_opened: MyString
+  date_needed: MyString
