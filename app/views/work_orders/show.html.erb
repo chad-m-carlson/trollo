@@ -1,2 +1,20 @@
-<h1>WorkOrders#show</h1>
-<p>Find me in app/views/work_orders/show.html.erb</p>
+<h1>Work Order #<%= @work_order.id%> | <%= @work_order.description %></h1>
+<h3 style="margin-bottom: 0px"> <%= @work_order.tail_number %> |  Serial Number <%= @work_order.serial_number %>
+</h3>
+  <h4 style="margin-top: 0px">
+   Date Opened: <%= @work_order.date_opened %> | Completion Goal: <%= @work_order.date_needed %>
+  </h4>
+  <br />
+  <hr />
+  <br />
+<div class="ui stackable four column grid">
+    <div class="column">To Do
+
+    </div>
+    <div class="column">DOING
+
+    </div>
+    <div class="column">Completed
+
+    </div>
+  </div>

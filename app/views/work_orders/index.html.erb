@@ -1,2 +1,11 @@
-<h1>WorkOrders#index</h1>
-<p>Find me in app/views/work_orders/index.html.erb</p>
+<h1>Work Orders</h1>
+<dl>
+  <% @work_orders.each_with_index do |w, i| %>
+  <dt>
+    <%= i + 1 %>) <%= w.description %> on <%= w.tail_number %> for <%= w.customer %>
+    <dd>
+      <%= link_to  "Click to view this Work Order", work_order_path(w) %>
+    </dd>
+  </dt>
+  <% end%>
+</dl>
