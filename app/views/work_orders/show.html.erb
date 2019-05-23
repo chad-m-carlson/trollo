@@ -8,13 +8,10 @@
   <hr />
   <br />
 <div class="ui stackable four column grid">
-    <div class="column">To Do
+  <% @work_order.lists.each do |l| %>
+    <div class="column">
+      <%= l.title %>
 
     </div>
-    <div class="column">DOING
-
-    </div>
-    <div class="column">Completed
-
-    </div>
+    <% end%>
   </div>

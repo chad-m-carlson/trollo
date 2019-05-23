@@ -1,0 +1,11 @@
+<%# form_with(model: @task, local: true, class: "ui form") do |f| %>
+  <div class="field">
+    <%# f.label :task_title, "Task" %>
+    <%# f.text_field :task_title %>
+  </div>
+<%#end%>
+#ADD BEFORE ACTION FOR LIST IN TASK CONTROLLER
+<%= form_for [@list, @task] do |f| %>
+  <%= f.label :task_title, "text" %>
+  <%= f.text_field :task_title %>
+<% end %>
