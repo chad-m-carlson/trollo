@@ -1,5 +1,4 @@
 <%= form_with(model: [@list,@task], local: true, class: "ui form") do |f| %>
-<% binding.pry%>
   <div class="field">
     <%= f.label :task_title, "Task" %>
     <%= f.text_field :task_title %>

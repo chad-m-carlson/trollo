@@ -1,2 +1,19 @@
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<h1>Edit <%= @task.task_title %></h1>
+
+<%= form_with(model:[@list, @task], local:true, class:"ui form") do |f| %>
+  <div class="field">
+    <%= f.label :task_title %>
+    <%= f.text_field :task_title, class: "input" %>
+  </div>
+  <div class="field">
+    <%= f.label :task_description %>
+    <%= f.text_field :task_description, class: "input" %>
+  </div>
+  <div class="field">
+      <%= f.select "list_id", options_for_select( List.all.collect {|l| 
+        [l.title, l.id] }) %>
+  </div>
+  <%= f.submit nil, class: "ui button" %>
+  <% end%>
+  <% binding.pry%>
+  <%= link_to  "Delete This Task", list_task_path(@task.id), method: :delete %>
