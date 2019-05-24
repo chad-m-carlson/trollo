@@ -7,11 +7,20 @@
   <br />
   <hr />
   <br />
-<div class="ui stackable four column grid">
-  <% @work_order.lists.each do |l| %>
+  <div class="ui stackable four column grid">
+    <% @work_order.lists.each do |l| %>
     <div class="column">
       <%= l.title %>
-
+      <ol>
+        <% l.tasks.each_with_index do |t, i|%>
+        <li>
+            <%= t.task_title %>
+            <p style="font-size: 8px">
+               <%= link_to  "More info", list_task_path(l.id, t.id) %>
+            </p>
+        </li>
+        <% end%>
+      </ol>  
     </div>
     <% end%>
   </div>
