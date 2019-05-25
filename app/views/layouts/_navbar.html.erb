@@ -9,11 +9,13 @@
             <% @work_order.lists.each do |l| %>
             <div class="item"> <%= link_to  l.title , new_list_task_path(l.id) %></div>
            <% end%>
-           <% else%>
+    <% end%>
+           <% if @task%>
+           <%= link_to  "Back to Work Order", work_order_path(@list.work_order_id), class: "item" %>
+           <% end%>
           </div>
         </div>
       </div>
-      <% end%>
     <div class="right menu">
       <%# if current_user %>
         <%# link_to "Logout", destroy_user_session_path, method: :delete, class: "item" %>

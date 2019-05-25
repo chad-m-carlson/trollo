@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_list, only: [:edit, :show]
+  before_action :set_list, only: [:update ,:edit, :show]
 
   def index
   end
@@ -23,14 +23,17 @@ class TasksController < ApplicationController
   end
 
   def edit
-  end
+    # @task = Task.find(params[:id])
 
+  end
+  
   def update
-    Task.update_task(@task.id, params.require(:task).permit(:task_title, :task_description, :list_id))
+    @task.update_task(@task.id, params.require(:task).permit(:task_title, :task_description, :list_id, :updated_at, :id ))
+    redirect_to work_order_path(@list.work_order_id)
   end
 
   def destroy
-    Task.delete_task(:id)
+    @task.delete_task(params[:id])
     #FIX THIS PATH######################################
     redirect_to work_orders_path
   end
@@ -38,7 +41,8 @@ class TasksController < ApplicationController
   private
 
   def set_task
-    @task = Task.single_task(params[:id])
+    @task = Task.find(params[:id])
+    # @task = Task.single_task(params[:id])
   end
 
   def set_list
