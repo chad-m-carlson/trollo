@@ -7,7 +7,7 @@
           <i class="dropdown icon"></i>
           <div class="menu">
             <% @work_order.lists.each do |l| %>
-            <div class="item"> <%= link_to  l.title , new_list_task_path(l.id) %></div>
+            <div class="item"> <%= link_to  l.title , new_list_task_path(l.id), class: "ui div" %></div>
            <% end%>
     <% end%>
            <% if @task%>
@@ -17,6 +17,9 @@
         </div>
       </div>
     <div class="right menu">
+      <% if !@work_order%>
+        <%= link_to "Create New Work Order", new_work_order_path, class: "item" %>
+      <% end%>
       <%# if current_user %>
         <%# link_to "Logout", destroy_user_session_path, method: :delete, class: "item" %>
       <%#else %>

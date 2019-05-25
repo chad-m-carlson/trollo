@@ -20,4 +20,4 @@
   </div>
   <%= f.submit nil, class: "ui button" %>
   <% end%>
-  <%= link_to  "Delete This Task", list_task_path(@task.id), method: :delete %>
+  <%= link_to  "Delete This Task", list_task_path(@task.id), method: :delete, class: "ui button red" %>

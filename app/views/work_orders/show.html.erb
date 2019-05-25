@@ -1,12 +1,17 @@
 <h1>Work Order #<%= @work_order.id%> | <%= @work_order.description %></h1>
 <h3 style="margin-bottom: 0px"> <%= @work_order.tail_number %> |  Serial Number <%= @work_order.serial_number %>
 </h3>
-  <h4 style="margin-top: 0px">
+  <h4 style="margin-top: 0px; margin-bottom: 0px">
    Date Opened: <%= @work_order.date_opened %> | Completion Goal: <%= @work_order.date_needed %>
   </h4>
-  <br />
+  <p style="font-size: 10px">
+    <%= link_to  "Edit This Information", edit_work_order_path(@work_order) %>
+  </p>
   <hr />
   <br />
+  <% if @work_order.lists.count == 0%>
+    <%= button_to "Create New Lists", new_work_order_list_path(@work_order), method: :get, class: "ui button" %>
+  <% else%>
   <div class="ui stackable four column grid">
     <% @work_order.lists.each do |l| %>
     <div class="column">
@@ -15,7 +20,7 @@
         <% l.tasks.sort_by_priority.each_with_index do |t, i|%>
         <li>
             <%= t.task_title %>
-            <p style="font-size: 8px">
+            <p style="font-size: 10px">
               <!-- CAN'T GET THIS DROP DOWN MENU TO WORK TO SELECT PRIORITY -->
               <%# form_with(model:@x, local:true) %>
               <%# f.select "priority", options_for_select( ['1','2','3','4','5']) %>
@@ -26,5 +31,6 @@
         <% end%>
       </ol>  
     </div>
+    <% end%>
     <% end%>
   </div>

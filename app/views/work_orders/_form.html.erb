@@ -1,0 +1,41 @@
+<h1>
+  <div style="display: flex; justify-content: space-between">
+    <%= @work_order.id ? "Edit Work Order ##{@work_order.id}" : "Create A New Work Order" %>
+     <%=button_to "Back", work_orders_path, method: :get, class: "ui button" %>
+  </div>
+</h1>
+
+<%= form_with(model: @work_order, local: true, class: "ui form") do |f| %>
+  <div class="field">
+      <%= f.label :customer, "Customer" %>
+      <%= f.text_field :customer %>
+  </div>
+  <div class="field">
+      <%= f.label :description, "Description" %>
+      <%= f.text_field :description %>
+  </div>
+  <div class="field">
+      <%= f.label :tail_number, "Tail Number" %>
+      <%= f.text_field :tail_number %>
+  </div>
+  <div class="field">
+      <%= f.label :serial_number, "Serial Number" %>
+      <%= f.text_field :serial_number %>
+  </div>
+  <div class="field">
+      <%= f.label :date_opened, "Date Opened" %>
+      <%= f.text_field :date_opened %>
+  </div>
+  <div class="field">
+      <%= f.label :date_needed, "Projected Completion" %>
+      <%= f.text_field :date_needed %>
+  </div>
+  <div style="display: flex; justify-content: space-between;">
+
+    <%= f.submit nil, class: "ui button" %>
+    <% end%>
+    <br />
+    <br />
+    <%= @work_order.id ? (link_to "Delete This Work Order", work_order_path(@work_order.id), method: :delete, class: "ui button red") : nil %>
+  </div>
+    

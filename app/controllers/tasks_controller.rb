@@ -14,7 +14,7 @@ class TasksController < ApplicationController
   end
   
   def create
-    @list.find_list(params[:list_id])
+    @list = List.find_list(params[:list_id])
     @task = Task.create_task(task_params)   
     redirect_to work_order_path(@list.work_order_id)
   end
