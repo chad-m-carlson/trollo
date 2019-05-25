@@ -9,6 +9,11 @@
     <%= f.hidden_field :list_id, value: @list.id %>
   </div>
   <div class="field">
+    <%= f.label :priority, "Priority Level" %>
+    <p style="font-size: 8px">1 is highest, 5 is lowest</p>
+    <%= f.select "priority", options_for_select( ['1','2','3','4','5'], @task.priority) %>
+</div>
+  <div class="field">
     <%= f.submit nil,  class: "ui button" %>
   </div>
 <%end%>

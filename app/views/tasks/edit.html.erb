@@ -1,4 +1,4 @@
-<h1>Edit <%= @task.task_title %></h1>8
+<h1>Edit <%= @task.task_title %></h1>
 <%= form_with(model:[@list, @task], local:true, class:"ui form") do |f| %>
   <div class="field">
     <%= f.label :task_title %>
@@ -11,12 +11,12 @@
   <div class="field">
       <%= f.label :priority, "Priority Level" %>
       <p style="font-size: 8px">1 is highest, 5 is lowest</p>
-      <%= f.select "priority", options_for_select( ['1','2','3','4','5']) %>
+      <%= f.select "priority", options_for_select( ['1','2','3','4','5'], @task.priority) %>
   </div>
   <div class="field">
     <%= f.label :list_id, "Current status" %>
       <%= f.select "list_id", options_for_select( List.all.collect {|l| 
-        [l.title, l.id] }) %>
+        [l.title, l.id] }, @list.id) %>
   </div>
   <%= f.submit nil, class: "ui button" %>
   <% end%>

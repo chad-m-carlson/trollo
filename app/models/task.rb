@@ -4,10 +4,9 @@ class Task < ApplicationRecord
   def update_task(t_id, params)
     Task.find_by_sql(["
       UPDATE tasks
-      SET task_title = ?, task_description = ?, list_id = ?, id = ?, updated_at = ?
+      SET task_title = ?, task_description = ?, list_id = ?, id = ?, updated_at = ?, priority = ?
       WHERE id = #{t_id};",
-      params[:task_title],params[:task_description],params[:list_id],
-  t_id, DateTime.now
+      params[:task_title],params[:task_description],params[:list_id],t_id, DateTime.now, params[:priority]
       ])
   end
   
@@ -18,13 +17,16 @@ class Task < ApplicationRecord
       "])
   end
   #CLASS METHOD
+
+
   def self.create_task(params)
     Task.find_by_sql(["
-      INSERT INTO tasks (task_title, task_description, list_id, created_at, updated_at)
-      VALUES (:task_title, :task_description, :list_id, :created_at, :updated_at)", {
+      INSERT INTO tasks (task_title, task_description, list_id, created_at, priority, updated_at)
+      VALUES (:task_title, :task_description, :list_id, :created_at, :priority, :updated_at)", {
         task_title: params[:task_title],
         task_description: params[:task_description],
         list_id: params[:list_id],
+        priority: params[:priority],
         created_at: DateTime.now,
         updated_at: DateTime.now
       }])
@@ -34,9 +36,8 @@ class Task < ApplicationRecord
     Task.find_by_sql(["
       SELECT *
       FROM tasks
-      --SWITCH THESE BELOW
       WHERE #{t_id} = id
-      "])
+      "]).first
   end
 
   def self.sort_by_priority

@@ -7,6 +7,6 @@ class List < ApplicationRecord
       SELECT *
       FROM lists 
       WHERE #{list_id} = id;
-      " ])
+      " ]).first
   end
 end

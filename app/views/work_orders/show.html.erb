@@ -13,7 +13,6 @@
       <%= l.title %>
       <ol>
         <% l.tasks.sort_by_priority.each_with_index do |t, i|%>
-        <% @x = t%>
         <li>
             <%= t.task_title %>
             <p style="font-size: 8px">
