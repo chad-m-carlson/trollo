@@ -9,6 +9,12 @@
     <%= f.text_field :task_description, class: "input" %>
   </div>
   <div class="field">
+      <%= f.label :priority, "Priority Level" %>
+      <p style="font-size: 8px">1 is highest, 5 is lowest</p>
+      <%= f.select "priority", options_for_select( ['1','2','3','4','5']) %>
+  </div>
+  <div class="field">
+    <%= f.label :list_id, "Current status" %>
       <%= f.select "list_id", options_for_select( List.all.collect {|l| 
         [l.title, l.id] }) %>
   </div>

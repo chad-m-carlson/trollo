@@ -12,10 +12,15 @@
     <div class="column">
       <%= l.title %>
       <ol>
-        <% l.tasks.each_with_index do |t, i|%>
+        <% l.tasks.sort_by_priority.each_with_index do |t, i|%>
+        <% @x = t%>
         <li>
             <%= t.task_title %>
             <p style="font-size: 8px">
+              <!-- CAN'T GET THIS DROP DOWN MENU TO WORK TO SELECT PRIORITY -->
+              <%# form_with(model:@x, local:true) %>
+              <%# f.select "priority", options_for_select( ['1','2','3','4','5']) %>
+              <%# end %>
                <%= link_to  "More info", list_task_path(l.id, t.id) %>
             </p>
         </li>
