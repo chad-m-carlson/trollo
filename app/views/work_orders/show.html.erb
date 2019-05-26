@@ -5,8 +5,8 @@
    Date Opened: <%= @work_order.date_opened %> | Completion Goal: <%= @work_order.date_needed %>
   </h4>
   <p style="font-size: 10px">
-    <%= link_to "Edit This Information", edit_work_order_path(@work_order) %>
-    &nbsp &nbsp
+    <%= link_to "Edit Work Order Information", edit_work_order_path(@work_order) %>
+    &nbsp|&nbsp
     <% if @work_order.lists.count >= 1  %>
     <%= link_to "Create New Lists", new_work_order_list_path(@work_order) %>
     <% end%>
@@ -20,6 +20,10 @@
     <% @work_order.lists.each do |l| %>
     <div class="column">
       <%= l.title %>
+      <br />
+      <p style="font-size: 10px">
+        <%= link_to  "Details", list_path(l) %>
+      </p>  
       <ol>
         <% l.tasks.sort_by_priority.each_with_index do |t, i|%>
         <li>

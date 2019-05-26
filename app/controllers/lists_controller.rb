@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_action :set_list, only: [:show, :destroy]
 
   def index
   end
@@ -20,9 +21,20 @@ class ListsController < ApplicationController
   def edit
   end
 
+  def destroy 
+    #FIGURE OUT HOW TO DESTROY DEPENDENTS WITH SQL##########################
+    @list.destroy
+    # @list.delete_list(params[:id])
+    redirect_to work_order_path(@list.work_order_id)
+  end
+
   private
 
     def list_params
       params.require(:list).permit(:work_order_id, :title, :description)
+    end
+
+    def set_list
+      @list = List.set_list(params[:id])
     end
 end

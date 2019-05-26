@@ -1,6 +1,13 @@
 class List < ApplicationRecord
   belongs_to :work_order, optional: :true
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
+
+  def delete_list(l_id)
+    List.find_by_sql("
+      DELETE FROM lists
+      WHERE #{l_id} = id
+      ")
+  end
 
   def self.create_list(params)
     List.find_by_sql(["

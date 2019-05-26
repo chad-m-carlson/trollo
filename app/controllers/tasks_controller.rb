@@ -27,7 +27,6 @@ class TasksController < ApplicationController
 
   def destroy
     @task.delete_task(params[:id])
-    binding.pry
     redirect_to work_order_path(@task.list.work_order_id)
   end
 
