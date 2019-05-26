@@ -23,7 +23,6 @@ before_action :set_work_order, only: [:show, :edit, :update, :destroy]
   end
 
   def update 
-
     @work_order.update_work_order(@work_order.id, work_order_params)
     redirect_to work_order_path(@work_order)
   end

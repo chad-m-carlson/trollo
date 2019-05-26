@@ -15,9 +15,12 @@
   </div>
   <div class="field">
     <%= f.label :list_id, "Current status" %>
-      <%= f.select "list_id", options_for_select( List.all.collect {|l| 
+    <% binding.pry%>
+      <%= f.select "list_id", options_for_select( List.where(work_order_id: @list.work_order_id).collect {|l| 
         [l.title, l.id] }, @list.id) %>
   </div>
-  <%= f.submit nil, class: "ui button" %>
-  <% end%>
-  <%= link_to  "Delete This Task", list_task_path(@task.id), method: :delete, class: "ui button red" %>
+  <div style="display: flex; justify-content: space-between">
+    <%= f.submit nil, class: "ui button" %>
+    <% end%>
+    <%= link_to  "Delete This Task", list_task_path(@task.id), method: :delete, class: "ui button red" %>
+  </div>

@@ -5,7 +5,11 @@
    Date Opened: <%= @work_order.date_opened %> | Completion Goal: <%= @work_order.date_needed %>
   </h4>
   <p style="font-size: 10px">
-    <%= link_to  "Edit This Information", edit_work_order_path(@work_order) %>
+    <%= link_to "Edit This Information", edit_work_order_path(@work_order) %>
+    &nbsp &nbsp
+    <% if @work_order.lists.count >= 1  %>
+    <%= link_to "Create New Lists", new_work_order_list_path(@work_order) %>
+    <% end%>
   </p>
   <hr />
   <br />

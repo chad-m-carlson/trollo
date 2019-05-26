@@ -44,12 +44,6 @@ class Task < ApplicationRecord
     order(priority: :asc)
   end
 
-  def self.set_list(l_id)
-    List.find_by_sql(["
-      SELECT *
-      FROM lists
-      WHERE #{l_id} = id
-      "]).first
-  end
+  
 
 end

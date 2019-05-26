@@ -1,5 +1,13 @@
-
-
 <h1>New "<%= @list.title %>" Task</h1>
+
+
+<!-- <h3>Choose a task template here or create a new task below.</h3> -->
+<%# form_with(model:@list, local:true, class:"ui form") do |f| %>
+
+<%# f.label :task_title, "Current status" %>
+<%# f.select "task_title", options_for_select( @master_task.all.collect {|t| 
+  [t.task_title, t.id] }) %>
+  <%# end %>
+
 
 <%= render "form" %>

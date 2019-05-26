@@ -1,0 +1,14 @@
+<%= form_with(model: [@list], local: true, class: "ui form") do |f| %>
+  <div class="field">
+    <%= f.label :title, "List Name" %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description, "Description" %>
+    <%= f.text_field :description %>
+    <%= f.hidden_field :work_order_id, value: @work_order.id %>
+  </div>
+  <div class="field">
+    <%= f.submit nil,  class: "ui button" %>
+  </div>
+<%end%>

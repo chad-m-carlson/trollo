@@ -32,11 +32,11 @@ class WorkOrder < ApplicationRecord
       ")
   end
 
-  def self.find_workorder(params)
+  def self.find_workorder(w_id)
     WorkOrder.find_by_sql("
       SELECT *
       FROM work_orders
-      WHERE work_orders.id = #{params}
+      WHERE work_orders.id = #{w_id}
       ").first
   end
 
