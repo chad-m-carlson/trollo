@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :destroy, :edit, :update]
+  before_action :customer?, only: [:new, :create, :edit, :update, :destroy]
 
   def index
   end
@@ -33,6 +34,13 @@ class ListsController < ApplicationController
   end
 
   private
+
+    def customer?
+      if current_user.try(:customer?)
+        flash[:error] = "Invalid Credentials"
+        redirect_to work_order_list_path(@list)
+      end
+    end
 
     def list_params
       params.require(:list).permit(:work_order_id, :title, :description)

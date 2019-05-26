@@ -1,6 +1,7 @@
 class WorkOrder < ApplicationRecord
   
   has_many :lists, dependent: :destroy
+  has_many :users
 
   
   def update_work_order(w_id, params)

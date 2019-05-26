@@ -17,9 +17,12 @@
         </div>
       </div>
     <div class="right menu">
+
+      <p> <%= current_user ? current_user.email : nil %></p>
       <% if !@work_order%>
         <%= link_to "Create New Work Order", new_work_order_path, class: "item" %>
-      <% end%>
+        <% end%>
+        <%= link_to  "Log out", destroy_user_session_path, method: :delete, class: "item" %>
       <%# if current_user %>
         <%# link_to "Logout", destroy_user_session_path, method: :delete, class: "item" %>
       <%#else %>
