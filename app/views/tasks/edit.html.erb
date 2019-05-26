@@ -15,7 +15,6 @@
   </div>
   <div class="field">
     <%= f.label :list_id, "Current status" %>
-    <% binding.pry%>
       <%= f.select "list_id", options_for_select( List.where(work_order_id: @list.work_order_id).collect {|l| 
         [l.title, l.id] }, @list.id) %>
   </div>

@@ -1,19 +1,27 @@
-<h1><%= @list.title %></h1>
-<h3>Description: <%= @list.description %></h3>
+<div style="display: flex; justify-content: space-between">
+  <h1><%= @list.title %></h1>
+  <%= link_to "Back", work_order_path(@list.work_order_id), class: "ui button" %>
+</div>
+<div class="ui card" style="width:31vw">
 
-<h4>Tasks</h4>
+  <h3>Description: <%= @list.description %></h3>
+  
+  <h4>Tasks</h4>
 <% @list.tasks.each do |t|%>
 <dd>
-<div class="ui list">
-  <div class="item">
-    <div class="content">
-      <h4 class="header"><%= t.task_title %></h4>
-      <div class="description">Description &nbsp|&nbsp <%= t.task_description %></div>
-      <div class="description">Priority &nbsp|&nbsp <%= t.priority %></div>
+  <div class="ui list">
+    <div class="item">
+      <div class="content">
+        <h4 class="header"><%= t.task_title %> <p style="font-size: 8px"> <%= link_to  "Delete This Task", list_task_path(@list, t), method: :delete %>   </p></h4>
+        <div class="description">Description &nbsp|&nbsp <%= t.task_description %></div>
+        <div class="description">Priority &nbsp|&nbsp <%= t.priority %></div>
+      </div>
     </div>
+  </dd>
+  <br />
+  <% end%>
+  <div style="display: flex; justify-content: space-between">
+    <%= link_to  "Edit This List", edit_work_order_list_path(@list.work_order_id, @list), class: "ui button" %>  <%= link_to  "Delete this list", list_path(@list), method: :delete, data: {confirm: "Are you sure you want to delete #{@list.title}"}, class: "ui button red" %>
   </div>
-</dd>
-<br />
-<% end%>
-<%= link_to  "Delete this list", list_path(@list), method: :delete, data: {confirm: "Are you sure you want to delete #{@list.title}"}, class: "ui button red" %>
-
+</div>
+  

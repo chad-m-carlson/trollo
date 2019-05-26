@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :destroy]
+  before_action :set_list, only: [:show, :destroy, :edit, :update]
 
   def index
   end
@@ -14,11 +14,15 @@ class ListsController < ApplicationController
 
   def create
     @list = List.create_list(list_params)
-    binding.pry
     redirect_to work_order_path(list_params[:work_order_id])
   end
 
   def edit
+  end
+
+  def update
+    @list.update_list(@list.id, list_params)
+    redirect_to work_order_path(@list.work_order_id)
   end
 
   def destroy 

@@ -18,7 +18,7 @@
   <% else%>
   <div class="ui stackable four column grid">
     <% @work_order.lists.each do |l| %>
-    <div class="column">
+    <div class="column ui card"  style="border: 1px solid grey;margin:10px">
       <%= l.title %>
       <br />
       <p style="font-size: 10px">

@@ -1,7 +1,7 @@
 <h1>
   <div style="display: flex; justify-content: space-between">
     <%= @work_order.id ? "Edit Work Order ##{@work_order.id}" : "Create A New Work Order" %>
-     <%=button_to "Back", work_orders_path, method: :get, class: "ui button" %>
+     <%=button_to "Back", work_order_path(@work_order), method: :get, class: "ui button" %>
   </div>
 </h1>
 

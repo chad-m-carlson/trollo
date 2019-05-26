@@ -2,10 +2,11 @@
 <dl>
   <% @work_orders.each_with_index do |w, i| %>
   <dt>
-    <%= i + 1 %>) <%= w.description %> on <%= w.tail_number %> for <%= w.customer %>
-    <dd>
-      <%= link_to  "Click to view this Work Order", work_order_path(w) %>
-    </dd>
-  </dt>
-  <% end%>
+      <%= i + 1 %>) <%= w.description %> on <%= w.tail_number %> for <%= w.customer %>
+      <dd>
+        <%= link_to  "Click to view this Work Order", work_order_path(w) %>
+      </dd>
+    </dt>
+    <br />
+    <% end%>
 </dl>
