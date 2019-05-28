@@ -38,7 +38,7 @@ class ListsController < ApplicationController
     def customer?
       if current_user.try(:customer?)
         flash[:error] = "Invalid Credentials"
-        redirect_to work_order_list_path(@list)
+        params[:work_order_id] ? (redirect_to work_order_path(params[:work_order_id])) : (redirect_to work_order_list_path(@list))
       end
     end
 

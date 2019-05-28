@@ -2,8 +2,15 @@
   <%= @task.task_title %>
 </h1>
 <h3>
- Description:  <%= @task.task_description %>
- <br />
- Priority: <%= @task.priority %>
+ Description: 
 </h3>
-<%= link_to  "Edit", edit_list_task_path(@list.id, @task) %>
+  <%= @task.task_description %>
+ <br />
+ <h3>
+
+   Priority: 
+  </h3>
+   <%= @task.priority %>
+   <hr />
+<%= link_to  "Edit", edit_list_task_path(@list.id, @task), class: "ui button" %>
+<%= link_to  "Back", work_order_path(@list.work_order_id), class: "ui button" %>

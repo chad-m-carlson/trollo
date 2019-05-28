@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_list, only: [:new, :create,:update ,:edit, :show]
-  before_action :customer?, only: [:show,:new, :create, :edit, :update, :destroy]
+  before_action :customer?, except: [:index]
 
   def index
   end
@@ -27,16 +27,21 @@ class TasksController < ApplicationController
   end
 
   def destroy
-      @task.delete_task(params[:id])
+    if current_user.mechanic
+      flash[:error] = "You must be an Administrator to do that!"
       redirect_to work_order_path(@task.list.work_order_id)
+    else
+    @task.delete_task(params[:id])
+    redirect_to work_order_path(@task.list.work_order_id)
+    end
   end
   
   private
   
   def customer?
     if current_user.try(:customer?)
-      redirect_to work_order_path(@task.list.work_order_id)
-      flash[:error] = "You must be a Mechanic or Administrator to do that!"
+      flash[:error] = "Invalid Credentials"
+      redirect_to work_order_path(@list.work_order_id)
     end
   end
 

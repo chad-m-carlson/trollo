@@ -1,4 +1,9 @@
 <h2>Log in</h2>
+
+<h4>Welcome to my Trollo Project, if you haven't read the ReadMe file yet, create a DB and seed it from my seed file.</h4>
+<h5>Then you can log in with 'admin', 'mechanic' or 'customer'@test.com with a password of 'password' to explore the features of my project.</h5>
+<p>I modeled this as a aircraft maintenance work order system. Each work order can have as many lists as the user wants, but would typically have a 'to do', 'in progress' and 'completed' list. Tasks can be added to the list and given a priority level and moved to different lists as they are in progress or completed.</p>
+<p>Be sure to check out that only the admin user is allowed access to modify anything within this web application. The mechanic and customer each have slighly different access rights. I played around with this a few different ways, from having a flash message telling them they didn't have the rights to do that from the controller, to just not having the links appear to edit or delete things.</p>
 <div class="ui form">
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

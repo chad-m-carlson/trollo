@@ -27,14 +27,16 @@ before_action :admin?, only: [:new, :create, :edit, :update, :destroy]
   end
 
   def destroy 
-    @work_order.delete_work_order(params[:id])
+    #HOW TO DESTROY DEPENDENTS WITH SQL?????????????????????????
+    @work_order.destroy
+    # @work_order.delete_work_order(params[:id])
     redirect_to work_orders_path
   end
 
   private
     
     def admin?
-      if !user_session.try(:admin?)
+      if !current_user.try(:admin?)
         @work_order ? (redirect_to work_order_path(@work_order)) :( redirect_to work_orders_path)
         flash[:error] = "You must be an Administrator to do that!"
       end

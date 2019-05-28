@@ -12,9 +12,12 @@
   <div class="ui list">
     <div class="item">
       <div class="content">
-        <h4 class="header"><%= t.task_title %> <p style="font-size: 8px"> <%= link_to  "Delete This Task", list_task_path(@list, t), method: :delete %>   </p></h4>
-        <div class="description">Description &nbsp|&nbsp <%= t.task_description %></div>
-        <div class="description">Priority &nbsp|&nbsp <%= t.priority %></div>
+        <h4 class="header"><%= t.task_title %> <p style="font-size: 8px">
+           <%= current_user.admin ? (link_to  "Delete This Task", list_task_path(@list, t), method: :delete) : nil %>   </p></h4><br />
+        <div class="description"><strong>Description</strong> &nbsp|&nbsp <%= t.task_description %></div><br />
+        <div class="description"><strong>Priority</strong> &nbsp|&nbsp <%= t.priority %></div>
+        <br />
+        <hr />
       </div>
     </div>
   </dd>
