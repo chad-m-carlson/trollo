@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   resources :lists do
     resources :tasks
   end
+
+  resources :master_tasks 
+
 end

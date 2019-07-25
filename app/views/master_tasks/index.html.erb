@@ -1,0 +1,13 @@
+<h1>MasterTasks#index</h1>
+<ul>
+  <% @master_tasks.each do |mt|%>
+  <li>
+    <%= mt.task_title %>
+    <p> - <%= mt.task_description %></p>
+    <%= link_to  "Show", master_task_path(mt.id) %> | 
+    <%= link_to  "Edit", edit_master_task_path(mt.id) %>
+  </li>
+  <br />
+  <% end%>
+</ul>
+

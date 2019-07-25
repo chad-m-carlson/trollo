@@ -11,6 +11,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @mastertasks = MasterTask.all
   end
   
   def create
