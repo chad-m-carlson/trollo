@@ -1,26 +1,7 @@
-Seed file is set up to populate some work orders, lists and tasks for the lists along with an admin, mechanic and customer user profiles.
+If you want to clone this project, create, migrate and seed a local database. 
 
-Each profile has some different basic access rights on what can be viewed, edited or deleted.
+Then you can log in with 'admin', 'mechanic' or 'customer'@test.com with a password of 'password' to explore the features of my project.
 
-Tasks are sorted by priority, and it can be changed. Tasks can also be moved to new lists.
+I modeled this as a aircraft maintenance work order system. Each work order can have as many lists as the user wants, but would typically have a 'to do', 'in progress' and 'completed' list. Tasks can be added to the list and given a priority level and moved to different lists as they are in progress or completed.
 
-Work In Progress: Having a list of Master Tasks, and Lists that you can duplicate when creating new ones.
-
-Trollo
- 
-Instructions:
-
-For this assignment, you will be creating a project management application very similar to the website Trello. It will have multiple boards, each board has multiple lists, and each list should have multiple tasks.
-Basic Objectives
-Create a new rails app and make sure you make it a git repo and have a GitHub repo linked to it
-Board Model - (chores board, work board, etc...) 
-List Model
-Users should be able to organize lists by priority.
-Task Model 
-All CRUD actions for each model
-Write all SELECT queries for all CRUD actions
-Be able to order lists and tasks
-Bonus Objectives
-Write all INSERT, UPDATE, and DELETE  SQL queries for all CRUD actions
-Add Devise to your app
-Add styling using a framework
+Be sure to check out that only the admin user is allowed access to modify anything within this web application. The mechanic and customer each have slighly different access rights. I played around with this a few different ways, from having a flash message telling them they didn't have the rights to do that from the controller, to just not having the links appear to edit or delete things.
